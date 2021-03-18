@@ -43,7 +43,11 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#ifdef __APPLE__ || __FREEBSD__
+#define VERSION_CODE   "1.0.0"
+#define MODULE_NAME    "cpulimit"
+#define MODULE_VERSION "Ver. " VERSION_CODE " " __DATE__ " " __TIME__
+
+#if defined(__APPLE__) || defined(__FREEBSD__)
 #include <libgen.h>
 #endif
 
@@ -130,7 +134,13 @@ static void print_usage(FILE *stream, int exit_code)
 	fprintf(stream, "      -p, --pid=N            pid of the process (implies -z)\n");
 	fprintf(stream, "      -e, --exe=FILE         name of the executable program file or path name\n");
 	fprintf(stream, "      COMMAND [ARGS]         run this command and limit it (implies -z)\n");
-	fprintf(stream, "\nReport bugs to <marlonx80@hotmail.com>.\n");
+	fprintf(stream, "\nReport bugs to\n");
+	fprintf(stream, "\n  marlonx80@hotmail.com");
+	fprintf(stream, "\n  faerroc@gmail.com    ");
+	fprintf(stream, "\n\n");
+	fprintf(stream, "MODULE_NAME    : %s\n", MODULE_NAME);
+	fprintf(stream, "MODULE_VERSION : %s\n", MODULE_VERSION);
+	fprintf(stream, "\n");
 	exit(exit_code);
 }
 
